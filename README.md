@@ -19,6 +19,7 @@ Please check out: http://continuum.io/thanks and https://anaconda.org
 
 ## Using the Program
 There are two ways to run the program
+
 Method one:
 1. type ```python word_ladder.py``` into your terminal
 2. press enter
