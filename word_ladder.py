@@ -125,7 +125,7 @@ def build_nodes(word_ladder_file_name):
 def create_combinations(list_of_words):
     combos = []
     for i in range(len(list_of_words)-1):
-        for j in range(1,len(list_of_words)):
+        for j in range(i+1,len(list_of_words)):
             combo = []
             if i == j:
                 continue
@@ -200,23 +200,23 @@ def create_solver_nodes_and_edges(word_ladder_file_name):
     solver_nodes = []
     solver_edges = []
     with open(word_ladder_file_name) as file_name:
-        contents = file_name.read()
-        lined_contents = contents.strip('\n')
-        filtered_contents = filter_words(lined_contents)
+        contents_str = file_name.read()
+        contents_str = contents_str.strip('\n')
+        filtered_contents = filter_words(contents_str)
         adding_nodes = True
         for i in range(len(filtered_contents)):
             if filtered_contents[i] == 'EDGES':
                 adding_nodes = False
+                continue
+            if adding_nodes:
+                solver_nodes.append(filtered_contents[i])
             else:
-                if adding_nodes:
-                    solver_nodes.append(filtered_contents[i])
-                else:
-                    edge = []
-                    line = filtered_contents[i].split(',')
-                    for entry in line:
-                        edge.append(int(entry))
-                    tuple_edge = tuple(edge)
-                    solver_edges.append(tuple_edge)
+                edge = []
+                line = filtered_contents[i].split(',')
+                for entry in line:
+                    edge.append(int(entry))
+                tuple_edge = tuple(edge)
+                solver_edges.append(tuple_edge)
         return  (solver_nodes, solver_edges)
 
 
@@ -281,7 +281,7 @@ def simplify_array(array):
 def solver(word_ladder_file_name,start_word, end_word, max_moves):
     # read all the words into a nodes file from the word_ladder_file_name
     solver_nodes, solver_edges = create_solver_nodes_and_edges(word_ladder_file_name)
-    solver_edges = set(solver_edges)
+    # solver_edges = set(solver_edges)
     edges = {}
     for solver_edge in solver_edges:
         edge_start_word_idx = solver_edge[0]
@@ -304,8 +304,6 @@ def solver(word_ladder_file_name,start_word, end_word, max_moves):
         print 'Answer:'
         for word_idx in answer:
             print solver_nodes[word_idx]
-            
-
 
 # In[144]:
 
