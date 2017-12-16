@@ -31,7 +31,7 @@ Example: ```python word_ladder.py hate love 5```
 In the example above, the start word is 'hate', the end word is 'love', and the maximum length is 5.
 2. press enter
 
-## Output:
+## Example Output:
 ```
 Answer:
 hate
