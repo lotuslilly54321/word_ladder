@@ -23,6 +23,7 @@ Method one:
 1. type ```python word_ladder.py``` into your terminal
 2. press enter
 3. The program will default to using 'cool' as the start word and 'warm' as the end word. It will find answers of length 6 or less.
+
 Method two:
 1. type ```python word_ladder.py``` and then your desired start word, end word, and maximum length of the answer.
 Example: ```python word_ladder.py hate love 5```
